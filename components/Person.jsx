@@ -14,7 +14,7 @@ const Person = ({ people, setPeople }) => {
       {people.map(({ id, name, age, image }) => (
         <div
           key={id}
-          className="flex items-center p-4 gap-4 transition ease-in-out delay-150 duration-300 hover:border hover:shadow-md hover:rounded"
+          className="flex items-center p-4 gap-4 transition ease-in-out delay-150 duration-300 hover:border hover:shadow-md hover:rounded-xl"
         >
           <img
             src={image}
