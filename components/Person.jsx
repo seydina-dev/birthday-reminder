@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button } from "./ui/button";
 
 const Person = ({ people, setPeople }) => {
@@ -23,15 +23,17 @@ const Person = ({ people, setPeople }) => {
           />
           <div className="flex justify-between items-center w-[80%]">
             <div>
-              <h2 className="font-bold text-[#595c77]">{name}</h2>
-              <p className="text-[#595c77] font-medium text-muted-foreground">
+              <h2 className="font-PoppinsBold font-bold text-[#595c77]">
+                {name}
+              </h2>
+              <p className="text-[#595c77] font-PoppinsMedium font-medium text-muted-foreground">
                 {age} years
               </p>
             </div>
             <div>
               <Button
                 variant="ghorst"
-                className="items-end text-[#3fdeaf] border-2 transition ease-in-out delay-150 duration-300 border-[#3fdeaf] hover:text-white hover:bg-[#3fdeaf]"
+                className="font-medium text-[#3fdeaf] border-2 transition ease-in-out delay-150 duration-300 border-[#3fdeaf] hover:text-white hover:bg-[#3fdeaf]"
                 onClick={() => {
                   removeItem(id);
                 }}

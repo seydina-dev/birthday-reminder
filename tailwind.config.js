@@ -1,3 +1,5 @@
+const { Rubik_Doodle_Shadow } = require("next/font/google");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -56,8 +58,9 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        poppins: ["var(--font-poppins)"],
-        roboto: ["var(--font-roboto)"],
+        PoppinsBold: ["var(--font-poppins-bold)"],
+        PoppinsMedium: ["var(--font-poppins-medium)"],
+        RubikDoodleShadowRegular: ["var(--font-Rubik-doodle-shadow-regular)"],
       },
     },
   },

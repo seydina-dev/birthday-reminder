@@ -1,17 +1,19 @@
-// import localFont from "next/font/local";
-import { Roboto, Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const poppins_init = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "500", "600", "700"],
-  variable: "--font-poppins",
+const rubikDoodleShadowRegular = localFont({
+  src: "./fonts/RubikDoodleShadow-Regular.ttf",
+  variable: "--font-Rubik-doodle-shadow-regular",
+  weight: "400",
 });
 
-const roboto_init = Roboto({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700"],
-  variable: "--font-roboto",
+const poppinsMedium = localFont({
+  src: "./fonts/Poppins-Medium.ttf",
+  variable: "--font-poppins-medium",
+});
+const poppinsBold = localFont({
+  src: "./fonts/Poppins-Bold.ttf",
+  variable: "--font-poppins-bold",
 });
 
 export const metadata = {
@@ -24,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins_init.variable} ${roboto_init.variable} antialiased`}
+        className={`${rubikDoodleShadowRegular.variable} ${poppinsMedium.variable} ${poppinsBold.variable} antialiased`}
       >
         {children}
       </body>

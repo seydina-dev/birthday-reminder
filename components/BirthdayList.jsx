@@ -8,7 +8,7 @@ const BirthdayList = () => {
   const [people, setPeople] = useState(data);
   return (
     <div className="flex flex-col border p-4 rounded shadow-2xl w-[80%] max-w-[500]">
-      <h1 className="font-bold text-[#595c77] text-2xl text-center p-5">
+      <h1 className="font-RubikDoodleShadowRegular font-bold text-[#595c77] text-3xl text-center p-5">
         {people.length} Birthdays today
       </h1>
       <Person people={people} setPeople={setPeople} />
