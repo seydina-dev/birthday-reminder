@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { Edit2Icon } from "lucide-react";
 
 const Person = ({ people, setPeople }) => {
   const removeItem = (id) => {
@@ -9,12 +10,17 @@ const Person = ({ people, setPeople }) => {
       })
     );
   };
+
+  const [hoveredPersonId, setHoveredPersonId] = useState(null);
+
   return (
     <>
       {people.map(({ id, name, age, image }) => (
         <div
           key={id}
           className="flex items-center p-4 gap-4 transition ease-in-out delay-150 duration-300 hover:border hover:shadow-md hover:rounded-xl"
+          onMouseEnter={() => setHoveredPersonId(id)}
+          onMouseLeave={() => setHoveredPersonId(null)}
         >
           <img
             src={image}
@@ -40,6 +46,16 @@ const Person = ({ people, setPeople }) => {
               >
                 remove
               </Button>
+              {hoveredPersonId === id && (
+                <Button
+                  variant="secondary"
+                  className="transition ease-in-out delay-500 duration-1000 ml-2 text-orange-300"
+                  onClick={() => console.log(`Edit person with ID: ${id}`)}
+                >
+                  Edit
+                  <Edit2Icon />
+                </Button>
+              )}
             </div>
           </div>
         </div>
