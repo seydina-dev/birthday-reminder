@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { v6 as uuidv6 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 const AddBirthday = ({ people, setPeople }) => {
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ const AddBirthday = ({ people, setPeople }) => {
       setPeople((prev) => [
         ...prev,
         {
-          id: uuidv6(),
+          id: uuidv4(),
           name,
           age,
           birthdate,
