@@ -12,35 +12,37 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { v6 as uuidv6 } from "uuid";
 
 const AddBirthday = ({ people, setPeople }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [birthdate, setBirthdate] = useState(new Date());
 
   const handleAdd = () => {
-    // TODO: more input control for age
     if (name.trim() && age.trim()) {
-      setPeople((prev) => {
-        return [
-          ...prev,
-          {
-            id: uuidv6(),
-            name: name,
-            age: age,
-            image: `https://ui-avatars.com/api/?name=${name}`,
-          },
-        ];
-      });
+      setPeople((prev) => [
+        ...prev,
+        {
+          id: uuidv6(),
+          name,
+          age,
+          birthdate,
+          image: `https://ui-avatars.com/api/?name=${name}`,
+        },
+      ]);
       setName("");
       setAge("");
+      setBirthdate(new Date()); // reset to the current date or a default
     }
   };
 
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild className="w-full bg-gray-500 py-2">
+        <DialogTrigger asChild>
           <Button variant="outline">Add Person</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
@@ -72,6 +74,17 @@ const AddBirthday = ({ people, setPeople }) => {
                 value={age}
                 className="col-span-3"
                 onChange={(e) => setAge(e.target.value)}
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="birthdate" className="text-right">
+                Birthday
+              </Label>
+              <DatePicker
+                selected={birthdate}
+                onChange={(date) => setBirthdate(date)}
+                dateFormat="dd/MM/yyyy"
+                className="col-span-3 border rounded p-2"
               />
             </div>
           </div>
