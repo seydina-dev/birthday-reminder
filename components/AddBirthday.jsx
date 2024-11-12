@@ -71,6 +71,9 @@ const AddBirthday = ({ people, setPeople }) => {
               </Label>
               <Input
                 id="age"
+                type="number"
+                min="1"
+                max="120"
                 value={age}
                 className="col-span-3"
                 onChange={(e) => setAge(e.target.value)}
@@ -89,7 +92,11 @@ const AddBirthday = ({ people, setPeople }) => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit" onClick={handleAdd}>
+            <Button
+              type="submit"
+              onClick={handleAdd}
+              disabled={!name.trim() || !age.trim()}
+            >
               Add Birthday
               <PlusCircleIcon />
             </Button>
