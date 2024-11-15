@@ -4,7 +4,7 @@ import data from "../app/data";
 import Person from "./Person";
 import Card from "./Card";
 import { Button } from "./ui/button";
-
+import AddPerson from "./AddBirthday";
 const BirthdayList = () => {
   const [people, setPeople] = useState(data);
   return (
@@ -22,6 +22,7 @@ const BirthdayList = () => {
       >
         clear all
       </Button>
+      <AddPerson people={people} setPeople={setPeople} />
     </Card>
   );
 };
