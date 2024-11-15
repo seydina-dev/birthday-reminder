@@ -21,16 +21,44 @@ const AddBirthday = ({ people, setPeople }) => {
   const [age, setAge] = useState("");
   const [birthdate, setBirthdate] = useState(new Date());
 
+  const calculateDaysUntilBirthday = (birthdate) => {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    let nextBithday = new Date(
+      currentYear,
+      birthdate.getMonth(),
+      birthdate.getDate()
+    );
+
+    if (nextBithday < today) {
+      nextBithday = new Date(
+        currentYear + 1,
+        birthdate.getMonth(),
+        birthdate.getDate()
+      );
+    }
+
+    const differenceInTime = nextBithday - today; // in milliseconds
+    const nextBithdayInDays = Math.ceil(
+      differenceInTime / (1000 * 60 * 60 * 24)
+    ); // convert the time to days
+
+    return nextBithdayInDays;
+  };
+
   const handleAdd = () => {
     if (name.trim() && age.trim()) {
+      const daysUntilBirthday = calculateDaysUntilBirthday(birthdate);
       setPeople((prev) => [
         ...prev,
         {
           id: uuidv4(),
           name,
           age,
-          birthdate,
-          image: `https://ui-avatars.com/api/?name=${name}`,
+          birthdate: birthdate.toISOString().split("T")[0], // Store ISO format (e.g., "2024-02-21")
+          daysUntilBirthday,
+          image: `https://ui-avatars.com/api/?background=fff&name=${name}`,
         },
       ]);
       setName("");

@@ -11,7 +11,7 @@ const Person = ({ people, setPeople }) => {
   };
   return (
     <>
-      {people.map(({ id, name, age, image }) => (
+      {people.map(({ id, name, age, daysUntilBirthday, image }) => (
         <div
           key={id}
           className="flex items-center p-4 gap-4 transition ease-in-out delay-150 duration-300 hover:border hover:shadow-md hover:rounded-xl"
@@ -29,6 +29,12 @@ const Person = ({ people, setPeople }) => {
               <p className="text-[#595c77] font-PoppinsMedium font-medium text-muted-foreground">
                 {age} years
               </p>
+              {daysUntilBirthday && (
+                <p className="text-[#595c77] font-PoppinsMedium font-medium text-muted-foreground">
+                  <span className="text-green-400">{daysUntilBirthday} </span>
+                  {daysUntilBirthday > 1 ? "days" : "day"} until next birthday
+                </p>
+              )}
             </div>
             <div>
               <Button
